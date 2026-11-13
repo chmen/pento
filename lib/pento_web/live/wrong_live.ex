@@ -2,7 +2,7 @@ defmodule PentoWeb.WrongLive do
   use PentoWeb, :live_view
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, score: 0, time: time(), message: "Make a guess:")}
+    {:ok, assign(socket, score: 0, time: time(), given_number: given_number(), message: "Make a guess:")}
   end
 
   def render(assigns) do
@@ -32,8 +32,17 @@ defmodule PentoWeb.WrongLive do
     DateTime.utc_now() |> to_string()
   end
 
+  def given_number do
+    to_string(Enum.random(1..10))
+  end
+
   def handle_event("guess", %{"number" => guess}, socket) do
-    message = "Your guess: #{guess}. Wrong. Guess again. "
+    message=
+      if guess == socket.assigns.given_number do
+        "You are f..ing right. How did you do it!"
+      else
+        "Your guess: #{guess}. Wrong. Guess again. "
+      end
 
     score = socket.assigns.score - 1
 
