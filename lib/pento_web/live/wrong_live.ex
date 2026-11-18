@@ -39,7 +39,7 @@ defmodule PentoWeb.WrongLive do
   def handle_event("guess", %{"number" => guess}, socket) do
     { message, score } =
       cond do
-        guess == socket.assigns.given_number -> {"You are f..ing right. How did you do it!", socket.assigns.score + 100}
+        guess == socket.assigns.given_number -> {"You are f..ing right. How did you do it!", socket.assigns.score + 9}
         true -> {"Your guess: #{guess}. Wrong. Guess again. ", socket.assigns.score - 1}
       end
 
