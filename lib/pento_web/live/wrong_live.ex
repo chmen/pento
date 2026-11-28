@@ -36,7 +36,7 @@ defmodule PentoWeb.WrongLive do
         <% end %>
       </h2>
       <h2>
-        {@current_user.email}
+        { @current_user.username }
       </h2>
       </main>
     """

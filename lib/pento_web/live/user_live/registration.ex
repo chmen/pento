@@ -33,6 +33,14 @@ defmodule PentoWeb.UserLive.Registration do
             phx-mounted={JS.focus()}
           />
 
+          <.input
+            field={@form[:username]}
+            type="text"
+            label="username"
+            spellcheck="false"
+            phx-mounted={JS.focus()}
+          />
+
           <.button phx-disable-with="Creating account..." class="btn btn-primary w-full">
             Create an account
           </.button>
